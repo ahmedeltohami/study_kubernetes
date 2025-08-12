@@ -20,9 +20,7 @@
 ├── service.yaml
 └── README.md
 
-yaml
-Copy
-Edit
+
 
 ---
 
@@ -51,20 +49,15 @@ Route / بيرجع رسالة JSON فيها Quote عن النحل.
 التطبيق بيشتغل على البورت 5050 داخل الكونتينر.
 ____________________________________________________________________________________
 📦 2. Requirements File (requirements.txt)
-nginx
-Copy
-Edit
 flask
 شرح الملف:
 
 بيحتوي على المكتبات المطلوبة لتشغيل البرنامج.
 
 Docker بيقرأ الملف ويعمل pip install لكل المكتبات المذكورة.
-
+______________________________________________________________________________________
 📄 3. Dockerfile
-dockerfile
-Copy
-Edit
+
 FROM python:3.9-slim
 
 WORKDIR /app
@@ -103,11 +96,9 @@ docker build → بناء صورة Docker من الـDockerfile.
 docker login → تسجيل الدخول في DockerHub.
 
 docker push → رفع الصورة إلى DockerHub.
-
+__________________________________________________________________________-
 📄 5. Kubernetes Deployment File (deployment.yaml)
-yaml
-Copy
-Edit
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -136,11 +127,9 @@ replicas: 1 → نسخة واحدة من التطبيق.
 image → صورة Docker المرفوعة على DockerHub.
 
 containerPort: 5050 → البورت داخل الكونتينر.
-
+___________________________________________________________________________
 📄 6. Kubernetes Service File (service.yaml)
-yaml
-Copy
-Edit
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -165,11 +154,9 @@ port: 80 → البورت داخل الكلاستر.
 targetPort: 5050 → البورت داخل الكونتينر.
 
 nodePort: 30095 → البورت الخارجي للوصول للتطبيق.
-
+__________________________________________________________________
 🚀 7. Apply Kubernetes Files
-bash
-Copy
-Edit
+
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 شرح الخطوات:
@@ -177,27 +164,20 @@ kubectl apply -f service.yaml
 إنشاء Deployment و Service في Kubernetes.
 
 التأكد أن البودز والخدمات اشتغلت.
-
+__________________________________________________________
 📡 8. Access the App
 عن طريق Minikube:
 
-bash
-Copy
-Edit
 minikube service bee-quotes-service --url
 أو عن طريق Port Forward:
 
-bash
-Copy
-Edit
+
 kubectl port-forward service/bee-quotes-service 5080:80 --address=0.0.0.0
 🐝 Expected Output
-json
-Copy
-Edit
 {
   "quote": "Be like a bee. Work hard, stay focused, and make something sweet."
 }
+________________________________
 📝 Notes
 يجب تشغيل Minikube قبل تنفيذ الأوامر.
 
