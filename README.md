@@ -81,11 +81,9 @@ RUN pip install → تثبيت المكتبات.
 COPY . . → نسخ باقي ملفات المشروع.
 
 CMD ["python", "app.py"] → تشغيل التطبيق.
-
+_______________________________________________________________-
 🛠️ 4. Build & Push Docker Image
-bash
-Copy
-Edit
+
 docker build -t eltohami/bee-quotes-app:v1 .
 docker login
 docker push eltohami/bee-quotes-app:v1
